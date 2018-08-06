@@ -2,4 +2,3 @@
 
 * sindrome
 * freezer
-* Capitán America
