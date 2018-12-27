@@ -1,0 +1,35 @@
+chuleta sql
+
+SELECT
+	id_usuario,
+	nombre,
+	SUM(
+		CASE
+		WHEN condicion_pago = 'prestamo' THEN
+			monto_bs
+		END
+	) AS prestamo_bs,
+SUM(
+		CASE
+		WHEN condicion_pago = 'prestamo' THEN
+			monto_usd
+		END
+	) AS prestamo_usd,
+SUM(
+		CASE
+		WHEN condicion_pago = 'contado' THEN
+			monto_bs
+		END
+	) AS contado_bs,
+SUM(
+		CASE
+		WHEN condicion_pago = 'contado' THEN
+			monto_usd
+		END
+	) AS contado_usd
+FROM
+	tabla_cobros
+WHERE
+	clave_factura > 0
+GROUP BY
+	id_usuario
